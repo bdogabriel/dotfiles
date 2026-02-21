@@ -1,0 +1,4 @@
+wrap-chars = [".", ";", ":", "!", "?", "]"]
+tabsize = 1
+tabchar = "tab"
+lists = ["description", "enumerate", "itemize"]

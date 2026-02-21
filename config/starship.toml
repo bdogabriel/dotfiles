@@ -1,0 +1,138 @@
+add_newline = false
+
+format = """$directory$character$sudo"""
+right_format = """$all"""
+
+command_timeout = 100000
+
+[directory]
+format = "[$path]($style) [$read_only]($read_only_style)"
+read_only = " "
+
+[sudo]
+format = "[$symbol]($style) "
+symbol = "󰌆 "
+disabled = false
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[c]
+format = "[$symbol]($style)"
+symbol = " "
+
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+symbol = '󰸏 '
+
+[container]
+format = "[$symbol $name]($style)"
+symbol = "󱋩 "
+
+[dart]
+format = "[$symbol]($style)"
+symbol = " "
+
+[docker_context]
+format = "[$symbol]($style)"
+symbol = "󰡨 "
+
+[dotnet]
+format = "[$symbol]($style)"
+symbol = " "
+
+[elixir]
+format = "[$symbol]($style)"
+symbol = " "
+
+[elm]
+format = "[$symbol]($style)"
+symbol = " "
+
+[erlang]
+format = "[$symbol]($style)"
+symbol = " "
+
+[golang]
+format = "[$symbol]($style)"
+symbol = " "
+
+[haskell]
+format = "[$symbol]($style)"
+symbol = "󰲒 "
+
+[haxe]
+format = "[$symbol]($style)"
+symbol = " "
+
+[java]
+format = "[$symbol]($style)"
+symbol = "󰬷 "
+
+[jobs]
+format = "[$symbol $number]($style)"
+symbol = "󰣖 "
+
+[julia]
+format = "[$symbol]($style)"
+symbol = " "
+
+[kotlin]
+format = "[$symbol]($style)"
+symbol = " "
+
+[lua]
+format = "[$symbol]($style)"
+symbol = " "
+
+[nim]
+format = "[$symbol]($style)"
+symbol = " "
+
+[nix_shell]
+format = "[$symbol]($style)"
+symbol = "󱄅 "
+
+[nodejs]
+format = "[$symbol]($style)"
+symbol = "󰎙 "
+
+[package]
+format = "[$version]($style) "
+version_format = "$raw"
+
+[perl]
+format = "[$symbol]($style)"
+symbol = " "
+
+[php]
+format = "[$symbol]($style)"
+symbol = "󰌟 "
+
+[python]
+format = "[$symbol$version ($virtualenv )]($style)"
+symbol = " "
+
+[rlang]
+format = "[$symbol]($style)"
+symbol = "󰟔 "
+
+[ruby]
+format = "[$symbol]($style)"
+symbol = " "
+
+[rust]
+format = "[$symbol]($style)"
+symbol = " "
+
+[scala]
+format = "[$symbol]($style)"
+symbol = " "
+
+[swift]
+format = "[$symbol]($style)"
+symbol = " "
+
+[zig]
+format = "[$symbol]($style)"
+symbol = " "
