@@ -24,6 +24,18 @@ return {
                     },
                 },
                 {
+                    text = {
+                        function(args)
+                            for _, mark in ipairs(vim.fn.getmarklist(args.buf)) do
+                                if mark.pos[2] == args.lnum then
+                                    return mark.mark:sub(-1)
+                                end
+                            end
+                            return " "
+                        end,
+                    },
+                },
+                {
                     text = { lnum_both, " " },
                     condition = { true },
                     click = "v:lua.ScLa",
