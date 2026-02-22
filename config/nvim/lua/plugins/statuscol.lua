@@ -1,12 +1,13 @@
 return {
     "luukvbaal/statuscol.nvim",
     config = function()
-        -- Custom function to show both absolute and relative line numbers
         local function lnum_both()
             local lnum = vim.v.lnum
-            local relnum = vim.v.lnum == vim.fn.line(".") and 0 or math.abs(vim.v.lnum - vim.fn.line("."))
-            return string.format("%3d %2d", lnum, relnum)
+            local relnum = vim.v.relnum
+            local width = #tostring(vim.fn.line("$")) + 1
+            return string.format("%" .. width .. "d %-" .. width .. "d", lnum, relnum)
         end
+
         require("statuscol").setup({
             setopt = true,
             segments = {
