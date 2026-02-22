@@ -20,7 +20,6 @@ return {
                     sign = {
                         namespace = { ".*" },
                         name = { ".*" },
-                        auto = true,
                     },
                 },
                 {
