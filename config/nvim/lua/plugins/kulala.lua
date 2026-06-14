@@ -172,6 +172,24 @@ return {
     opts = {
         global_keymaps = true,
         global_keymaps_prefix = "<leader>r",
+        kulala_keymaps = {
+            ["Previous tab"] = false,
+            ["Next tab"] = false,
+            ["Next response"] = {
+                "]",
+                function()
+                    require("kulala.ui").show_next()
+                end,
+                prefix = false,
+            },
+            ["Previous response"] = {
+                "[",
+                function()
+                    require("kulala.ui").show_previous()
+                end,
+                prefix = false,
+            },
+        },
         kulala_keymaps_prefix = "",
         ui = {
             icons = {

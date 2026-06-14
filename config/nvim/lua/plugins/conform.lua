@@ -10,7 +10,6 @@ return {
                 cpp = { "clang_format" },
                 cs = { "clang_format" },
                 css = { "stylelint" },
-                gdscript = { "gdformat" },
                 go = { "goimports", "gofmt" },
                 graphql = { "prettierd" },
                 html = { "biome" },
@@ -20,10 +19,8 @@ return {
                 json = { "biome" },
                 kotlin = { "ktlint" },
                 lua = { "stylua" },
-                markdown = { "mdformat" },
                 rego = { "opa" },
                 sql = { "sleek" },
-                tex = { "tex-fmt" },
                 toml = { "taplo" },
                 typescript = { "biome" },
                 yaml = { "yamlfmt" },
@@ -37,9 +34,6 @@ return {
                     args = { "format", "$FILENAME" },
                     stdin = false,
                 },
-                gdformat = {
-                    prepend_args = { "--use-spaces", "4" },
-                },
                 opa = {
                     command = "opa",
                     args = { "fmt", "--write", "$FILENAME" },
@@ -47,9 +41,6 @@ return {
                 },
                 shfmt = {
                     prepend_args = { "-i", "4" },
-                },
-                ["tex-fmt"] = {
-                    prepend_args = { "--config", vim.fn.expand("~/.config/tex-fmt/tex-fmt.toml") },
                 },
                 ["google-java-format"] = {
                     command = "google-java-format",

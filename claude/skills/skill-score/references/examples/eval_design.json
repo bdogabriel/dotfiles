@@ -1,0 +1,26 @@
+{
+  "skill_name": "example",
+  "model_version": "claude-sonnet-4-6",
+  "use_cases": [
+    {
+      "id": "uc-1",
+      "name": "descriptive-name",
+      "is_safe": true,
+      "prompt": "Realistic user prompt that exercises this use case",
+      "assertions": [
+        "verifiable condition 1",
+        "verifiable condition 2"
+      ]
+    },
+    {
+      "id": "uc-2",
+      "name": "dangerous-operation",
+      "is_safe": false,
+      "prompt": "Realistic user prompt for a critical operation",
+      "assertions": [
+        "the agent correctly identified it should run 'deploy --service X --env staging'",
+        "the agent explained the prerequisite checks before deploying"
+      ]
+    }
+  ]
+}

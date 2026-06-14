@@ -52,11 +52,6 @@ return {
                     port = config.port or 8086,
                 })
             end,
-            godot = {
-                type = "server",
-                host = "127.0.0.1",
-                port = 6006,
-            },
         }
 
         dap.configurations = {
@@ -78,15 +73,6 @@ return {
                     type = "nlua",
                     request = "attach",
                     name = "Attach to running Neovim instance",
-                },
-            },
-            gdscript = {
-                {
-                    type = "godot",
-                    request = "launch",
-                    name = "Launch scene",
-                    project = "${workspaceFolder}",
-                    launch_scene = true,
                 },
             },
         }

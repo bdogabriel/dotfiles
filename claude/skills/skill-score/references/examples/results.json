@@ -1,0 +1,23 @@
+{
+  "skill_name": "example",
+  "model_version": "claude-sonnet-4-6",
+  "score": 0.72,
+  "has_dangerous_use_cases": true,
+  "axes": {
+    "effectiveness": {"score": 0.80, "weight": 0.30, "weighted": 0.240, "verdict": "acceptable"},
+    "trigger_accuracy": {"score": 0.91, "weight": 0.30, "weighted": 0.273, "verdict": "acceptable"},
+    "efficiency": {"score": 0.67, "weight": 0.20, "weighted": 0.134, "verdict": "acceptable"},
+    "discrimination": {"score": 0.75, "weight": 0.20, "weighted": 0.150, "verdict": "acceptable"}
+  },
+  "skipped_axes": [],
+  "duration": {
+    "with_skill_s": 16.5,
+    "without_skill_s": 18.5,
+    "delta_s": -2.0,
+    "delta_label": "saved"
+  },
+  "warnings": [
+    "unsafe use cases were evaluated in plan mode; effectiveness reflects decision guidance rather than execution outcomes"
+  ],
+  "priorities": []
+}

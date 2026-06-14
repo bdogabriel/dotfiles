@@ -1,0 +1,102 @@
+foreground: &foreground "#e0def4"
+background: &background "#191724"
+current_line: &current_line "#26233a"
+selection: &selection "#26233a"
+comment: &comment "#6e6a86"
+subtle: &subtle "#908caa"
+cyan: &cyan "#9ccfd8"
+green: &green "#31748f"
+orange: &orange "#f6c177"
+pink: &pink "#c4a7e7"
+purple: &purple "#c4a7e7"
+red: &red "#eb6f92"
+yellow: &yellow "#f6c177"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: default
+    logoColor: *purple
+  prompt:
+    fgColor: *foreground
+    bgColor: *current_line
+    suggestColor: *purple
+  help:
+    fgColor: *foreground
+    bgColor: *current_line
+    sectionColor: *cyan
+    keyColor: *cyan
+    numKeyColor: *purple
+  info:
+    fgColor: *pink
+    sectionColor: *foreground
+  dialog:
+    fgColor: *foreground
+    bgColor: *current_line
+    buttonFgColor: *foreground
+    buttonBgColor: *purple
+    buttonFocusFgColor: *yellow
+    buttonFocusBgColor: *pink
+    labelFgColor: *orange
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *selection
+      focusColor: *current_line
+    menu:
+      fgColor: *foreground
+      fgStyle: bold
+      keyColor: *pink
+      numKeyColor: *pink
+    crumbs:
+      fgColor: *foreground
+      bgColor: *current_line
+      activeColor: *current_line
+    status:
+      newColor: *cyan
+      modifyColor: *purple
+      addColor: *green
+      errorColor: *red
+      highlightColor: *orange
+      killColor: *comment
+      completedColor: *comment
+    title:
+      fgColor: *foreground
+      bgColor: *current_line
+      highlightColor: *orange
+      counterColor: *purple
+      filterColor: *pink
+  views:
+    charts:
+      bgColor: default
+      defaultDialColors:
+        - *purple
+        - *red
+      defaultChartColors:
+        - *purple
+        - *red
+    table:
+      fgColor: *foreground
+      bgColor: default
+      header:
+        fgColor: *foreground
+        bgColor: default
+        sorterColor: *cyan
+    xray:
+      fgColor: *foreground
+      bgColor: default
+      cursorColor: *current_line
+      graphicColor: *purple
+      showIcons: false
+    yaml:
+      keyColor: *pink
+      colonColor: *purple
+      valueColor: *foreground
+    logs:
+      fgColor: *foreground
+      bgColor: default
+      indicator:
+        fgColor: *background
+        bgColor: *purple
+        toggleOnColor: *green
+        toggleOffColor: *selection

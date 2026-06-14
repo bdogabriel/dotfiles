@@ -1,0 +1,26 @@
+{
+  "skill_name": "example",
+  "model_version": "claude-sonnet-4-6",
+  "has_dangerous_use_cases": true,
+  "axes": {
+    "effectiveness": {
+      "pass_rate_with_skill": 0.85,
+      "pass_rate_without_skill": 0.35
+    },
+    "trigger_accuracy": {
+      "triggered": 4,
+      "total": 5
+    },
+    "efficiency": {
+      "pass_rate_delta": 0.50,
+      "tokens_with_skill": 3800,
+      "tokens_without_skill": 2100,
+      "duration_ms_with_skill": 16500,
+      "duration_ms_without_skill": 18500
+    },
+    "discrimination": {
+      "discriminating_assertions": 6,
+      "total_assertions": 8
+    }
+  }
+}

@@ -31,6 +31,7 @@ zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 export EDITOR="nvim"
 export VISUAL="nvim"
 export GIT_EDITOR="nvim"
+export FORCE_HYPERLINK=1
 
 alias gdw=./gradlew
 alias ls='ls -la --color'
@@ -65,9 +66,16 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
-# asdf
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# path
+typeset -U path
+path=(
+    $HOME/.local/bin
+    $HOME/go/bin
+    $HOME/Library/Python/3.13/bin
+    $HOME/Library/pnpm
+    ${ASDF_DATA_DIR:-$HOME/.asdf}/shims
+    $path
+)
 
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -89,8 +97,44 @@ bindkey '^R' fzf-history-widget
 # zoxide
 eval "$(zoxide init --cmd c zsh)"
 
-# starship
-eval "$(starship init zsh)"
+# prompt
+setopt prompt_subst
+autoload -Uz add-zsh-hook
+
+_git_info() {
+  local branch=$(git branch --show-current 2>/dev/null)
+  [[ -z "$branch" ]] && { GIT_PROMPT=""; return; }
+
+  local porcelain=$(git status --porcelain 2>/dev/null)
+  local staged=$(echo "$porcelain" | grep -cE '^[MADRC] ')
+  local unstaged=$(echo "$porcelain" | grep -cE '^.[MADRC]')
+  local untracked=$(echo "$porcelain" | grep -c '^??')
+
+  local s=""
+  [[ $staged -gt 0 ]] && s="${s}+"
+  [[ $unstaged -gt 0 ]] && s="${s}!"
+  [[ $untracked -gt 0 ]] && s="${s}?"
+
+  local info=" %F{magenta} %F{white}${branch}%f"
+  [[ -n "$s" ]] && info="${info} %F{yellow}[${s}]%f"
+
+  GIT_PROMPT="$info"
+}
+
+add-zsh-hook precmd _git_info
+
+PROMPT='%F{blue}%~%f${GIT_PROMPT} %F{green}❯%f '
+
+# ssh
+if [[ "$(uname)" == "Darwin" ]]; then
+    () {
+        if [[ "$(sw_vers -productVersion)" > "12.0" ]]; then
+            ssh-add --apple-load-keychain 2>/dev/null
+        else
+            ssh-add -A 2>/dev/null
+        fi
+    } &|
+fi
 
 # sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -100,6 +144,11 @@ sdk() {
     sdk "$@"
 }
 sdk version > /dev/null 2>&1 # comment to lazy load sdkman
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 function _tab_history_or_complete() {
     if zle autosuggest-accept; then
@@ -118,12 +167,8 @@ if [[ -f "$HOME/.env" ]]; then
     export $(cat "$HOME/.env")
 fi
 
-path_entries=(
-    /usr/local/go/bin
-    "$HOME/go/bin"
-    "$HOME/.local/bin"
-    "$HOME/Library/Python/3.13/bin"
-    "/bin"
-    "$PATH"
-)
-export PATH="${(j.:.)path_entries}"
+# asdf completions
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
