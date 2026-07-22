@@ -101,27 +101,7 @@ eval "$(zoxide init --cmd c zsh)"
 setopt prompt_subst
 autoload -Uz add-zsh-hook
 
-_git_info() {
-  local branch=$(git branch --show-current 2>/dev/null)
-  [[ -z "$branch" ]] && { GIT_PROMPT=""; return; }
-
-  local porcelain=$(git status --porcelain 2>/dev/null)
-  local staged=$(echo "$porcelain" | grep -cE '^[MADRC] ')
-  local unstaged=$(echo "$porcelain" | grep -cE '^.[MADRC]')
-  local untracked=$(echo "$porcelain" | grep -c '^??')
-
-  local s=""
-  [[ $staged -gt 0 ]] && s="${s}+"
-  [[ $unstaged -gt 0 ]] && s="${s}!"
-  [[ $untracked -gt 0 ]] && s="${s}?"
-
-  local info=" %F{magenta} %F{white}${branch}%f"
-  [[ -n "$s" ]] && info="${info} %F{yellow}[${s}]%f"
-
-  GIT_PROMPT="$info"
-}
-
-add-zsh-hook precmd _git_info
+source "$HOME/scripts/git-prompt.zsh"
 
 PROMPT='%F{blue}%~%f${GIT_PROMPT} %F{green}❯%f '
 
