@@ -172,3 +172,6 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
+
+# opencode
+export PATH=/home/bdogabriel/.opencode/bin:$PATH

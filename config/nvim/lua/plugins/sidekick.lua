@@ -7,7 +7,7 @@ return {
         cli = {
             mux = {
                 backend = "tmux",
-                enabled = true,
+                enabled = false,
             },
             win = {
                 split = {
@@ -15,7 +15,6 @@ return {
                 },
             },
             tools = {
-                claude = { cmd = { "claude" } },
                 opencode = { cmd = { "opencode" } },
             },
         },
@@ -41,10 +40,6 @@ return {
         local map = vim.keymap.set
 
         map("n", "<leader>ac", function()
-            require("sidekick.cli").toggle({ name = "claude", focus = true })
-        end, { desc = "Toggle Claude Code CLI", noremap = true, silent = true })
-
-        map("n", "<leader>ao", function()
             require("sidekick.cli").toggle({ name = "opencode", focus = true })
         end, { desc = "Toggle OpenCode CLI", noremap = true, silent = true })
 

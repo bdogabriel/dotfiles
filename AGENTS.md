@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to OpenCode when working with code in this repository.
 
 ## Project Overview
 
@@ -11,19 +11,17 @@ This is a personal dotfiles repository containing development environment config
 This repository is managed with **GNU Stow** for symlinking configuration files to the home directory:
 
 - Configuration files in version control are symlinked to their runtime locations
-- Example: `dotfiles/root/.zshrc` → `~/.zshrc`
-- Example: `dotfiles/config/nvim/` → `~/.config/nvim/`
+- Example: `dotfiles/root/.zshrc` -> `~/.zshrc`
+- Example: `dotfiles/config/nvim/` -> `~/.config/nvim/`
 
 **Symlinked directories:**
-- `root/` → Home directory files (.zshrc, .tmux.conf, etc.)
-- `config/` → ~/.config/ (Neovim, ghostty)
-- `claude/` → ~/.claude/ (CLAUDE.md, skills)
+- `root/` -> Home directory files (.zshrc, .tmux.conf, etc.)
+- `config/` -> ~/.config/ (Neovim, ghostty, opencode)
 
 To apply changes after pulling updates, run stow from the dotfiles root:
 ```bash
 cd ~/dotfiles
 stow --target=$HOME root config
-stow --target=$HOME/.claude claude
 ```
 
 Verify symlinks are active:
@@ -86,7 +84,7 @@ tmux list-sessions
 
 The Neovim setup uses **Lazy.nvim** as the plugin manager with a modular architecture:
 
-**Entry point:** `init.lua` → loads config modules → loads plugins
+**Entry point:** `init.lua` -> loads config modules -> loads plugins
 
 **Config modules** (`lua/config/`):
 - `lazy.lua` - Bootstraps lazy.nvim plugin manager with auto-install
@@ -119,7 +117,7 @@ The Neovim setup uses **Lazy.nvim** as the plugin manager with a modular archite
 - diffview.nvim (diff viewing)
 
 **Developer Tools:**
-- sidekick.nvim (Claude Code and OpenCode CLI integration)
+- sidekick.nvim (OpenCode CLI integration)
 - kulala.nvim (REST client)
 - todo-comments.nvim (TODO highlighting)
 
@@ -169,9 +167,9 @@ Each plugin is configured via lazy.nvim's spec format with conditional loading a
 **`.zshrc` prompt** - Native zsh prompt with git integration:
 - Custom `_git_info` precmd hook showing branch and status flags (+, !, ?)
 
-### Claude AI Integration (`claude/`)
+### OpenCode Configuration (`config/opencode/`)
 
-Contains `CLAUDE.md` (global user instructions) and `skills/` (custom Claude Code skills, also loaded by OpenCode via an AGENTS.md symlink).
+Contains `AGENTS.md` (global user instructions) and `skills/` (custom OpenCode skills).
 
 ## Key Styling & Consistency
 
@@ -187,7 +185,7 @@ Contains `CLAUDE.md` (global user instructions) and `skills/` (custom Claude Cod
 
 **Git Conventions:**
 - Conventional commit format (based on commit history)
-- `.gitignore`: Excludes .DS_Store, .env, secrets, .claude/*, .aider/*
+- `.gitignore`: Excludes .DS_Store, .env, secrets, .aider/*, docs/
 
 ## Important Development Patterns
 
@@ -219,7 +217,7 @@ Contains `CLAUDE.md` (global user instructions) and `skills/` (custom Claude Cod
 - YAML, JSON, Markdown, etc.
 
 **Git Workflow:**
-- Repository at: `/Users/barbosa.gabriel/dotfiles`
+- Repository at: `/home/bdogabriel/repos/dotfiles`
 - Plugin lock file: `config/nvim/lazy-lock.json` (managed by Lazy.nvim)
 
 **Common Edits:**
@@ -227,6 +225,7 @@ Contains `CLAUDE.md` (global user instructions) and `skills/` (custom Claude Cod
 - Keybindings: Edit `lua/config/keymaps.lua`
 - Shell config: Edit `root/.zshrc`
 - LSP/formatting: Edit relevant plugin config or `lua/config/options.lua`
+- OpenCode config: Edit files in `config/opencode/`
 
 ## When Modifying This Repository
 

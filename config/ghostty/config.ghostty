@@ -1,9 +1,11 @@
+command = $(which zsh) --login --interactive
 shell-integration = zsh
+maximize = true
 
 # appearance
 theme = Rose Pine
 font-family = JetBrainsMonoNL Nerd Font Mono
-font-size = 16
+font-size = 14
 font-feature = -calt
 font-feature = -liga
 cursor-style = block
