@@ -28,7 +28,7 @@ return {
                 auto_show = true,
                 window = {
                     border = "rounded",
-                    winblend = 25,
+                    winblend = 0,
                     winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
                 },
             },

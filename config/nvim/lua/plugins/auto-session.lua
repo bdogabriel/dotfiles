@@ -33,7 +33,6 @@ return {
     },
 
     keys = {
-        -- Migrate your existing keymaps
         { "<leader>po", "<cmd>AutoSession search<CR>", desc = "Open" },
         {
             "<leader>pw",

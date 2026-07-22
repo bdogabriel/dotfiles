@@ -6,11 +6,9 @@
 .env.*.local
 .zprofile
 
-**/*.bak
-
 **/secrets/
 **/*secret*
 **/.aider*
-**/.claude*
 **/.aider*/**
-**/.claude*/**
+docs/
+.cursor/

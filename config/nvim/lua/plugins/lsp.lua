@@ -67,14 +67,6 @@ return {
         })
 
         local servers = {
-            gdscript = {
-                cmd = { "nc", "127.0.0.1", "6005" },
-                root_dir = function(_, on_dir)
-                    on_dir(vim.fn.getcwd())
-                end,
-                filetypes = { "gdscript", "gdscript3" },
-                capabilities = capabilities,
-            },
         }
 
         for server_name, config in pairs(servers) do
@@ -132,7 +124,6 @@ return {
             regal = {},
             sqlls = {},
             tailwindcss = {},
-            texlab = {},
             ts_ls = {
                 typescript = {
                     format = {
@@ -146,18 +137,17 @@ return {
                 },
             },
             yamlls = {},
+            gitlab_ci_ls = {},
         }
 
         local ensure_installed = vim.tbl_keys(mason_servers or {})
         vim.list_extend(ensure_installed, {
             "biome",
             "clang-format",
-            "gdtoolkit",
             "google-java-format",
             "ktlint",
             "kube-linter",
             "kulala-fmt",
-            "mdformat",
             "opa",
             "prettierd",
             "shfmt",
@@ -165,7 +155,6 @@ return {
             "stylelint",
             "stylua",
             "taplo",
-            "tex-fmt",
             "yamllint",
             "yamlfmt",
         })

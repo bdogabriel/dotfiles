@@ -13,4 +13,7 @@ return {
             },
         })
     end,
+    vim.keymap.set("n", "<leader>tl", function()
+        require("tiny-inline-diagnostic").toggle()
+    end, { desc = "Inline diagnostics" }),
 }

@@ -6,32 +6,19 @@ return {
         local clue = require("mini.clue")
         clue.setup({
             triggers = {
-                -- Leader triggers
                 { mode = "n", keys = "<leader>" },
                 { mode = "x", keys = "<leader>" },
-
-                -- Local Leader triggers
                 { mode = "n", keys = "<localleader>" },
                 { mode = "x", keys = "<localleader>" },
-
-                -- Built-in completion
                 { mode = "i", keys = "<C-x>" },
-
-                -- `g` key
                 { mode = "n", keys = "g" },
                 { mode = "x", keys = "g" },
-
-                -- Marks
                 { mode = "n", keys = "'" },
                 { mode = "n", keys = "`" },
                 { mode = "x", keys = "'" },
                 { mode = "x", keys = "`" },
-
-                -- Registers
                 { mode = "n", keys = '"' },
                 { mode = "x", keys = '"' },
-
-                -- `z` key
                 { mode = "n", keys = "z" },
                 { mode = "x", keys = "z" },
             },
@@ -43,6 +30,7 @@ return {
                 clue.gen_clues.windows(),
                 clue.gen_clues.z(),
 
+                { mode = "n", keys = "<leader>a", desc = "Sidekick" },
                 { mode = "n", keys = "<leader>c", desc = "Code" },
                 { mode = "n", keys = "<leader>ct", desc = "Toggle" },
                 { mode = "n", keys = "<leader>d", desc = "Debugger" },
@@ -58,7 +46,6 @@ return {
                 { mode = "n", keys = "<leader>s", desc = "Search" },
                 { mode = "n", keys = "<leader>t", desc = "Toggle" },
                 { mode = "n", keys = "<leader>v", desc = "Diffview" },
-                { mode = "n", keys = "<leader>x", desc = "VimTex" },
                 { mode = "n", keys = "gC", desc = "Text case" },
                 { mode = "n", keys = "gCo", desc = "Operator" },
                 { mode = "x", keys = "gC", desc = "Text case" },
