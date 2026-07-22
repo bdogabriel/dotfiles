@@ -16,8 +16,8 @@ _git_info() {
   local branch_line
   branch_line=$(echo "$porcelain" | head -1)
 
-  [[ "$branch_line" =~ "ahead" ]] && s="${s}up "
-  [[ "$branch_line" =~ "behind" ]] && s="${s}dn "
+  [[ "$branch_line" =~ "ahead" ]] && s="${s}↑"
+  [[ "$branch_line" =~ "behind" ]] && s="${s}↓"
 
   local dirty
   dirty=$(echo "$porcelain" | tail -n +2 | awk '
@@ -32,7 +32,7 @@ _git_info() {
 
   git stash list 2>/dev/null | grep -q . && dirty="${dirty}\$"
 
-  [[ -n "$dirty" ]] && s="${s}[${dirty}] "
+  [[ -n "$dirty" ]] && s="${s}${dirty} "
 
   local ongoing
   local git_dir
