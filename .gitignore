@@ -12,3 +12,4 @@
 **/.aider*/**
 docs/
 .cursor/
+.claude/
