@@ -10,7 +10,7 @@ Statically audits a skill's definition against the Agent Skills specification an
 ## Workflow
 
 1. User points at a target skill directory
-2. Run `<skill-lint-path>/.venv/bin/python <skill-lint-path>/scripts/validate.py <target>`, produces JSON with deterministic checks
+2. Run `uv run --with pyyaml python <skill-lint-path>/scripts/validate.py <target>` from `<skill-lint-path>`, produces JSON with deterministic checks
 3. Read the target skill's SKILL.md and any supporting files
 4. Evaluate subjective checks against `references/checklist.md`
 5. Merge both into a scored report
