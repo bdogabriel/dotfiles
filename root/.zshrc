@@ -101,7 +101,7 @@ eval "$(zoxide init --cmd c zsh)"
 setopt prompt_subst
 autoload -Uz add-zsh-hook
 
-source "$HOME/scripts/git-prompt.zsh"
+source "$HOME/scripts/git-prompt.sh"
 
 PROMPT='%F{blue}%~%f${GIT_PROMPT} %F{green}❯%f '
 
