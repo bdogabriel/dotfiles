@@ -17,6 +17,11 @@ return {
             function()
                 vim.api.nvim_exec_autocmds("User", { pattern = "SessionSavePre" })
             end,
+            function()
+                pcall(function()
+                    require("sidekick.cli").close({ all = true })
+                end)
+            end,
         },
         session_lens = {
             picker = "snacks",
