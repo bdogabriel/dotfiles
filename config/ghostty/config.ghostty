@@ -5,7 +5,7 @@ maximize = true
 # appearance
 theme = Rose Pine
 font-family = JetBrainsMonoNL Nerd Font Mono
-font-size = 14
+font-size = 13
 font-feature = -calt
 font-feature = -liga
 cursor-style = block
