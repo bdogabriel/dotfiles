@@ -6,10 +6,14 @@ _git_info() {
     local head
     head=$(git rev-parse --short HEAD 2>/dev/null)
     if [ -n "$head" ]; then
-      magenta=$(tput setaf 5)
-      white=$(tput setaf 7)
-      reset=$(tput sgr0)
-      GIT_PROMPT=" ${magenta}@${white}${head}${reset}"
+      if [ -n "$ZSH_VERSION" ]; then
+        GIT_PROMPT=" %F{magenta}@%F{white}${head}%f"
+      else
+        magenta=$(tput setaf 5)
+        white=$(tput setaf 7)
+        reset=$(tput sgr0)
+        GIT_PROMPT=" ${magenta}@${white}${head}${reset}"
+      fi
     else
       GIT_PROMPT=""
     fi
@@ -60,12 +64,16 @@ _git_info() {
 
   [ -n "$s" ] && s=" ${s}"
 
-  magenta=$(tput setaf 5)
-  white=$(tput setaf 7)
-  yellow=$(tput setaf 3)
-  red=$(tput setaf 1)
-  reset=$(tput sgr0)
-  GIT_PROMPT=" ${magenta} ${white}${branch}${yellow}${s}${red}${ongoing}${reset}"
+  if [ -n "$ZSH_VERSION" ]; then
+    GIT_PROMPT=" %F{magenta} %F{white}${branch}%F{yellow}${s}%F{red}${ongoing}%f"
+  else
+    magenta=$(tput setaf 5)
+    white=$(tput setaf 7)
+    yellow=$(tput setaf 3)
+    red=$(tput setaf 1)
+    reset=$(tput sgr0)
+    GIT_PROMPT=" ${magenta} ${white}${branch}${yellow}${s}${red}${ongoing}${reset}"
+  fi
 }
 
 if [ -n "$ZSH_VERSION" ]; then
