@@ -43,7 +43,7 @@ _git_info() {
 
   git stash list 2>/dev/null | grep -q . && dirty="${dirty}\$"
 
-  [ -n "$dirty" ] && s="${s}${dirty} "
+  [ -n "$dirty" ] && s="${s}${dirty}"
 
   local ongoing=""
   local git_dir
