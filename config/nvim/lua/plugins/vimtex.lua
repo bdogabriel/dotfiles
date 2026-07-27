@@ -2,7 +2,8 @@ return {
     "lervag/vimtex",
     lazy = false,
     init = function()
-        vim.g.vimtex_view_method = "evince"
+        vim.g.vimtex_view_method = "zathura"
+        vim.g.vimtex_syntax_enabled = 0
     end,
     config = function()
         -- Explicitly define all mappings with descriptions
@@ -14,7 +15,6 @@ return {
         vim.keymap.set("n", "<leader>xT", "<plug>(vimtex-toc-toggle)", { desc = "Toggle TOC", silent = true })
         vim.keymap.set("n", "<leader>xq", "<plug>(vimtex-log)", { desc = "Show log", silent = true })
         vim.keymap.set("n", "<leader>xv", "<plug>(vimtex-view)", { desc = "View PDF", silent = true })
-        vim.keymap.set("n", "<leader>xr", "<plug>(vimtex-reverse-search)", { desc = "Reverse search", silent = true })
         vim.keymap.set("n", "<leader>xl", "<plug>(vimtex-compile)", { desc = "Compile document", silent = true })
         vim.keymap.set(
             "n",
