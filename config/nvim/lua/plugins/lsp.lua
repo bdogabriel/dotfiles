@@ -36,7 +36,14 @@ return {
             callback = function(event)
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-                -- Only setup document highlight if the server supports it
+                -- fix clangd complaints
+                local uri = vim.uri_from_bufnr(event.buf)
+                if uri and not uri:match("^file://") then
+                    vim.lsp.buf_detach_client(event.buf, event.data.client_id)
+                    return
+                end
+
+                -- only setup document highlight if the server supports it
                 if client.server_capabilities.documentHighlightProvider then
                     local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 
@@ -66,8 +73,7 @@ return {
             end,
         })
 
-        local servers = {
-        }
+        local servers = {}
 
         for server_name, config in pairs(servers) do
             vim.lsp.config(server_name, config)

@@ -13,6 +13,7 @@ return {
             keymaps = {
                 view = {
                     { "n", "q", close_diffview, { desc = "Close Diffview" } },
+                    { "n", "<cr>", actions.goto_file_edit, { desc = "Open the file in the editor" } },
                 },
                 file_panel = {
                     { "n", "q", close_diffview, { desc = "Close Diffview" } },
@@ -24,6 +25,19 @@ return {
                 },
             },
         })
+
+        local pre_save = require("auto-session.config").pre_save_cmds
+        if not pre_save then
+            pre_save = {}
+            require("auto-session.config").pre_save_cmds = pre_save
+        end
+        table.insert(pre_save, function()
+            for _, view in ipairs(lib.views) do
+                if view.tabpage and vim.api.nvim_tabpage_is_valid(view.tabpage) then
+                    view:close()
+                end
+            end
+        end)
 
         vim.keymap.set("n", "<leader>gg", function()
             for _, view in ipairs(lib.views) do
