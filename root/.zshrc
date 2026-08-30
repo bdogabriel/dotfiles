@@ -155,3 +155,10 @@ export PNPM_HOME="$HOME/Library/pnpm"
 
 # opencode
 export PATH=/home/bdogabriel/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/home/bdogabriel/.bun/_bun" ] && source "/home/bdogabriel/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

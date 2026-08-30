@@ -40,7 +40,7 @@ return {
         styles = {
             notification = { wo = {
                 wrap = true,
-                winblend = 0,
+                winblend = 25,
             } },
             notification_history = {
                 wo = { wrap = true },

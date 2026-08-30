@@ -15,7 +15,7 @@ return {
                 },
             },
             tools = {
-                opencode = { cmd = { "opencode" } },
+                opencode = { cmd = { "opencode" }, env = { TMUX = false } },
             },
         },
         nes = {

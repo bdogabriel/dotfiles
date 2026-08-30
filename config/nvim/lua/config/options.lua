@@ -48,4 +48,4 @@ vim.opt.ttyfast = true -- Assumes a fast terminal connection
 vim.opt.undofile = true -- Enables persistent undo
 vim.opt.updatetime = 250 -- Sets the time for writing swap file and triggering CursorHold
 vim.opt.wildmode = "longest,list" -- Command-line completion mode
-vim.opt.winblend = 0
+vim.opt.winblend = 25
